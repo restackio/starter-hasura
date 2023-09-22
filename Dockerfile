@@ -14,6 +14,8 @@ ENV HASURA_GRAPHQL_METADATA_DATABASE_EXTENSIONS_SCHEMA=heroku_ext
 ENV HASURA_GRAPHQL_PG_CONNECTIONS=15
 # Set custom environment variables
 ENV MY_CUSTOM_ENV_VARIABLE=value
-CMD HASURA_GRAPHQL_METADATA_DATABASE_URL=$DATABASE_URL graphql-engine \
-    serve \
-    --server-port $PORT
+# Set the port you want to use
+ENV HASURA_GRAPHQL_SERVER_PORT=8080
+
+# Use the CMD instruction to run the Hasura service
+CMD ["graphql-engine", "serve"]
